@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center">Create new appointment</h2>
+            </div>
+    <!-- Creating an appointment input so users can add appointments -->
+    <!-- Adding the ngModel for two-way data binding coming from appointment-list.component.ts -->
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <input  class='form-control' type="text" [(ngModel)]="newAppointmentTitle" placeholder="Appointment description">
+                </div>
+                <div class="col-md-4">
+                    <input class='form-control' type="text" [(ngModel)]="newAppointmentDate" type='date' placeholder="Appointment date">
+                </div>
+                <div class="col-md-2">
+                    <!-- Button to add appointments with a click event -->
+                    <button class='btn btn-primary w-100' (click)="addAppointment()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center mt-5">Appointments</h2>
+
+    <ul class="list-group mt-3">
+        <!-- Looping through are appointments array -->
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let appointment of appointments; index as i" >
+            <!-- Using one way data binding -->
+            {{ appointment.title }}
+            {{ appointment.date | date: 'dd.MM.yyyy' }}
+            <button class="btn btn-danger" (click)="deleteAppointment(i)">Delete</button>
+        </li>
+    </ul>
+</div>
+
+
+
